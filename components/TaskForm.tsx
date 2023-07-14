@@ -5,6 +5,11 @@ const TaskForm: React.FC = () => {
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [selected, setSelected] = useState<string>("");
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+  };
+
   return (
     <div className="task-form">
       <div className="flex justify-end">
@@ -12,7 +17,10 @@ const TaskForm: React.FC = () => {
           Add task
         </button>
       </div>
-      <form className="flex flex-col justify-center gap-5 h-[calc(100vh-15rem)]">
+      <form
+        className="flex flex-col justify-center gap-5 h-[calc(100vh-15rem)]"
+        onSubmit={handleSubmit}
+      >
         <div className="form-control space-y-5">
           <label htmlFor="title">Title</label>
           <input
@@ -45,14 +53,18 @@ const TaskForm: React.FC = () => {
             id="status"
             className="py-4 px-6 text-black rounded-md appearance-none focus:outline-none w-full"
             value={selected}
-            onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSelected(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+              setSelected(e.target.value)
+            }
           >
             <option selected>Select</option>
             <option value="progress">In Progress</option>
             <option value="completed">Completed</option>
           </select>
         </div>
-        <button className="w-fit bg-white text-black py-4 px-6 rounded-md">Add Task</button>
+        <button className="w-fit bg-white text-black py-4 px-6 rounded-md">
+          Add Task
+        </button>
       </form>
     </div>
   );
