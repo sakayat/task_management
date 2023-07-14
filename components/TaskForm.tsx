@@ -8,6 +8,7 @@ const TaskForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    
   };
 
   return (
