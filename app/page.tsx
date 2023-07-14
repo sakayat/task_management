@@ -1,3 +1,4 @@
+import TaskForm from "@/components/TaskForm"
 
 
 const HomePage: React.FC = () => {
@@ -6,6 +7,7 @@ const HomePage: React.FC = () => {
       <div className="title">
         <h1 className="text-4xl border-b py-5">Task Management Application</h1>
       </div>
+      <TaskForm />
     </div>
   )
 }
