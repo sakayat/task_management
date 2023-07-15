@@ -17,6 +17,13 @@ const TaskForm: React.FC = observer(() => {
     todoStore.addTodo(todoObj);
   };
 
+  const handleEdit = (id: number) => {
+    const todo = todoStore.todos[id];
+    setTitle(todo.title);
+    setDescription(todo.description);
+    setSelected(todo.selected);
+  }
+
   return (
     <div className="task-form">
       <div className="flex justify-end">
@@ -73,7 +80,7 @@ const TaskForm: React.FC = observer(() => {
           Add Task
         </button>
       </form>
-      <TaskList />
+      <TaskList handleEdit={handleEdit}/>
     </div>
   );
 });

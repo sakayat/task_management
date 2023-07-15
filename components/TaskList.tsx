@@ -1,7 +1,12 @@
 import { useStore } from "@/contexts/StoreContext";
 import { observer } from "mobx-react";
 
-const TaskList: React.FC = observer(() => {
+
+interface TaskFormProps {
+  handleEdit: (arg: string) => void;
+}
+
+const TaskList: React.FC<TaskFormProps> = observer(({ handleEdit }) => {
   const todoStore = useStore();
   return (
     <div className="task-card py-5">
@@ -26,7 +31,10 @@ const TaskList: React.FC = observer(() => {
               </span>
             </div>
             <div className="button flex justify-between">
-              <button className="bg-black text-white py-2 px-6 rounded-md">
+              <button
+                className="bg-black text-white py-2 px-6 rounded-md"
+                onClick={() => handleEdit(id)}
+              >
                 Edit
               </button>
               <button className="bg-black text-white py-2 px-6 rounded-md">
