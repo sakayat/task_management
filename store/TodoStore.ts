@@ -7,11 +7,11 @@ const TodoStore = types
   })
   .actions((self) => ({
     addTodo: (todo: Instance<typeof TodoModel>) => {
-        const item = {
-          ...todo,
-        };
-        self.todos.push(item);
-      },
+      const item = {
+        ...todo,
+      };
+      self.todos.push(item);
+    },
   }));
 
 export default TodoStore;
