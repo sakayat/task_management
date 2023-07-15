@@ -1,13 +1,15 @@
 "use client";
+import { observer } from "mobx-react";
 import { useState } from "react";
 
-const TaskForm: React.FC = () => {
+const TaskForm: React.FC = observer(() => {
+  
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [selected, setSelected] = useState<string>("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
     
   };
 
@@ -69,6 +71,6 @@ const TaskForm: React.FC = () => {
       </form>
     </div>
   );
-};
+});
 
 export default TaskForm;
