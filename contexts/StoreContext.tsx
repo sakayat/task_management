@@ -11,4 +11,4 @@ export const useStore = (): TodoStoreType => {
   return store;
 };
 
-export default StoreContext
+export default StoreContext;

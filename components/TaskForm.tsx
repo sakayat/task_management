@@ -1,16 +1,20 @@
 "use client";
+import { useStore } from "@/contexts/StoreContext";
 import { observer } from "mobx-react";
 import { useState } from "react";
+import TaskList from "./TaskList";
 
 const TaskForm: React.FC = observer(() => {
-  
+
+  const todoStore = useStore();
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [selected, setSelected] = useState<string>("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+    const todoObj = { title, description, selected };
+    todoStore.addTodo(todoObj);
   };
 
   return (
@@ -69,6 +73,7 @@ const TaskForm: React.FC = observer(() => {
           Add Task
         </button>
       </form>
+      <TaskList />
     </div>
   );
 });
