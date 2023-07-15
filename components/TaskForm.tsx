@@ -4,6 +4,7 @@ import { observer } from "mobx-react";
 import { useState } from "react";
 import TaskList from "./TaskList";
 
+
 const TaskForm: React.FC = observer(() => {
 
   const todoStore = useStore();
@@ -41,7 +42,7 @@ const TaskForm: React.FC = observer(() => {
             type="text"
             id="title"
             placeholder="title"
-            className="outline-none py-4 px-6 text-black rounded-md w-full"
+            className="outline-none py-4 px-6 bg-white text-black rounded-md w-full"
             value={title}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setTitle(e.target.value)
@@ -53,7 +54,7 @@ const TaskForm: React.FC = observer(() => {
           <textarea
             id="description"
             placeholder="description"
-            className="outline-none py-4 px-6 text-black rounded-md w-full"
+            className="outline-none py-4 px-6 bg-white text-black rounded-md w-full"
             rows={6}
             value={description}
             onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
@@ -65,7 +66,7 @@ const TaskForm: React.FC = observer(() => {
           <label htmlFor="status">Status</label>
           <select
             id="status"
-            className="py-4 px-6 text-black rounded-md appearance-none focus:outline-none w-full"
+            className="py-4 px-6 bg-white text-black rounded-md appearance-none focus:outline-none w-full"
             value={selected}
             onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
               setSelected(e.target.value)

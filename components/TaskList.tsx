@@ -2,11 +2,11 @@ import { useStore } from "@/contexts/StoreContext";
 import { observer } from "mobx-react";
 
 
-interface TaskFormProps {
-  handleEdit: (arg: string) => void;
+interface Props {
+  handleEdit: (arg: number) => void;
 }
 
-const TaskList: React.FC<TaskFormProps> = observer(({ handleEdit }) => {
+const TaskList: React.FC<Props> = observer(({ handleEdit }) => {
   const todoStore = useStore();
   return (
     <div className="task-card py-5">
