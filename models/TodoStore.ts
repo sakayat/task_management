@@ -16,7 +16,7 @@ const TodoStore = types
     addTodo: (todo: TodoType) => {
       const newTodo = { ...todo };
       self.todos.push(newTodo);
-      localStorage.setItem("todos", JSON.stringify(self.todos));
+      localStorage.setItem("todos", JSON.stringify(self.todos))
     },
     updatedTodo: (id: number, updated: TodoType) => {
       const todo = self.todos.find((_, index) => index === id);
