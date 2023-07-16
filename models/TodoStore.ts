@@ -17,6 +17,15 @@ const TodoStore = types
       const newTodo = { ...todo };
       self.todos.push(newTodo);
     },
+    updatedTodo: (id: number, updated: TodoType) => {
+      self.todos = self.todos.map((todo, index) => {
+        if (index === id) {
+          return updated;
+        } else {
+          return todo;
+        }
+      });
+    },
   }));
 
 export type TodoStoreType = Instance<typeof TodoStore>;
