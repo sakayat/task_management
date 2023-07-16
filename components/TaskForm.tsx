@@ -4,18 +4,30 @@ import { observer } from "mobx-react";
 import { useState } from "react";
 import TaskList from "./TaskList";
 
-
 const TaskForm: React.FC = observer(() => {
-
   const todoStore = useStore();
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [selected, setSelected] = useState<string>("");
+  const [index, setIndex] = useState<number>(-1);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const todoObj = { title, description, selected };
-    todoStore.addTodo(todoObj);
+    const todoObj = {
+      id: Date.now(),
+      title,
+      description,
+      selected,
+    };
+    if (index === -1) {
+      todoStore.addTodo(todoObj);
+    } else {
+      todoStore.updatedTodo(index, todoObj);
+      setIndex(-1);
+    }
+    setTitle("");
+    setDescription("");
+    setSelected("");
   };
 
   const handleEdit = (id: number) => {
@@ -23,7 +35,8 @@ const TaskForm: React.FC = observer(() => {
     setTitle(todo.title);
     setDescription(todo.description);
     setSelected(todo.selected);
-  }
+    setIndex(id);
+  };
 
   return (
     <div className="task-form">
@@ -78,10 +91,10 @@ const TaskForm: React.FC = observer(() => {
           </select>
         </div>
         <button className="w-fit bg-white text-black py-4 px-6 rounded-md">
-          Add Task
+          {index === -1 ? "Add Task" : "Update task"}
         </button>
       </form>
-      <TaskList handleEdit={handleEdit}/>
+      <TaskList handleEdit={handleEdit} />
     </div>
   );
 });
