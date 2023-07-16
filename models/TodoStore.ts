@@ -16,6 +16,7 @@ const TodoStore = types
     addTodo: (todo: TodoType) => {
       const newTodo = { ...todo };
       self.todos.push(newTodo);
+      localStorage.setItem("todos", JSON.stringify(self.todos));
     },
     updatedTodo: (id: number, updated: TodoType) => {
       const todo = self.todos.find((_, index) => index === id);
@@ -24,9 +25,11 @@ const TodoStore = types
         todo.setDescription(updated.description);
         todo.setSelected(updated.selected);
       }
+      localStorage.setItem("todos", JSON.stringify(self.todos));
     },
     removeTodo: (id: number) => {
       self.todos = self.todos.filter((_, index) => index !== id);
+      localStorage.removeItem("todos");
     },
   }));
 
