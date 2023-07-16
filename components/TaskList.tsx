@@ -1,12 +1,12 @@
 import { useStore } from "@/contexts/StoreContext";
 import { observer } from "mobx-react";
 
-
 interface Props {
   handleEdit: (arg: number) => void;
+  handleDelete: (arg: number) => void;
 }
 
-const TaskList: React.FC<Props> = observer(({ handleEdit }) => {
+const TaskList: React.FC<Props> = observer(({ handleEdit, handleDelete }) => {
   const todoStore = useStore();
   return (
     <div className="task-card py-5">
@@ -37,7 +37,10 @@ const TaskList: React.FC<Props> = observer(({ handleEdit }) => {
               >
                 Edit
               </button>
-              <button className="bg-black text-white py-2 px-6 rounded-md">
+              <button
+                className="bg-black text-white py-2 px-6 rounded-md"
+                onClick={() => handleDelete(id)}
+              >
                 Delete
               </button>
             </div>

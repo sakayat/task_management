@@ -38,6 +38,10 @@ const TaskForm: React.FC = observer(() => {
     setIndex(id);
   };
 
+  const handleDelete = (id: number) => {
+    todoStore.removeTodo(id)
+  }
+
   return (
     <div className="task-form">
       <div className="flex justify-end">
@@ -94,7 +98,7 @@ const TaskForm: React.FC = observer(() => {
           {index === -1 ? "Add Task" : "Update task"}
         </button>
       </form>
-      <TaskList handleEdit={handleEdit} />
+      <TaskList handleEdit={handleEdit} handleDelete={handleDelete}/>
     </div>
   );
 });

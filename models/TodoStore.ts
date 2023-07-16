@@ -18,16 +18,15 @@ const TodoStore = types
       self.todos.push(newTodo);
     },
     updatedTodo: (id: number, updated: TodoType) => {
-      self.todos = self.todos.map((todo,index) => {
-        if (index === id) {
-          return updated;
-        } else {
-          return todo;
-        }
-      });
+      const todo = self.todos.find((_, index) => index === id);
+      if (todo) {
+        todo.setTitle(updated.title);
+        todo.setDescription(updated.description);
+        todo.setSelected(updated.selected);
+      }
     },
-    removeTodo: (id:number) => {
-      self.todos = self.todos.filter((todo) => todo.id !== id);
+    removeTodo: (id: number) => {
+      self.todos = self.todos.filter((_, index) => index !== id);
     },
   }));
 
