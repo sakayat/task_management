@@ -11,12 +11,12 @@ const TaskForm: React.FC = observer(() => {
   const [selected, setSelected] = useState<string>("");
   const [index, setIndex] = useState<number>(-1);
   const [isOpen, setIsOpen] = useState(false);
-  const [error, setError] = useState<string>("");
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!title && !description && selected) {
-      return;
+    if (!title && !description && !selected) {
+      return setError("Please fill in all the fields");
     } else {
       if (!title) {
         return setError("Please enter a title.");
@@ -33,8 +33,10 @@ const TaskForm: React.FC = observer(() => {
       selected,
     };
     if (index === -1) {
+      setError(null);
       todoStore.addTodo(todoObj);
     } else {
+      setError(null);
       todoStore.updatedTodo(index, todoObj);
       setIndex(-1);
     }
