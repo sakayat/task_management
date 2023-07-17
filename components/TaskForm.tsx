@@ -11,9 +11,21 @@ const TaskForm: React.FC = observer(() => {
   const [selected, setSelected] = useState<string>("");
   const [index, setIndex] = useState<number>(-1);
   const [isOpen, setIsOpen] = useState(false);
+  const [error, setError] = useState<string>("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!title && !description && selected) {
+      return;
+    } else {
+      if (!title) {
+        return setError("Please enter a title.");
+      } else if (!description) {
+        return setError("Please enter a description.");
+      } else if (!selected) {
+        return setError("Please select a status.");
+      }
+    }
     const todoObj = {
       id: Date.now(),
       title,
@@ -105,17 +117,18 @@ const TaskForm: React.FC = observer(() => {
                 setSelected(e.target.value)
               }
             >
-              <option selected>Select</option>
+              <option selected>Status</option>
               <option value="progress">In Progress</option>
               <option value="completed">Completed</option>
             </select>
           </div>
+          {error && <p className="text-rose-500">{error}</p>}
           <button className="w-fit bg-white text-black py-4 px-6 rounded-md">
             {index === -1 ? "Add Task" : "Update task"}
           </button>
         </form>
       </div>
-      {isOpen && (
+      {!isOpen && (
         <TaskList handleEdit={handleEdit} handleDelete={handleDelete} />
       )}
     </div>
