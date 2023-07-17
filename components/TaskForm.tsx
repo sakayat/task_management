@@ -115,7 +115,7 @@ const TaskForm: React.FC = observer(() => {
           </button>
         </form>
       </div>
-      {!isOpen && (
+      {isOpen && (
         <TaskList handleEdit={handleEdit} handleDelete={handleDelete} />
       )}
     </div>
