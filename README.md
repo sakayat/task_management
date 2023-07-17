@@ -23,18 +23,18 @@ The Task Management App is a web-based application built with the Next.js framew
 1. Clone the repository
 
 2. Navigate to the project directory:
+  
+   cd task_management
 
-cd task_management
-
-3. Install dependencies:
-
-npm install
+5. Install dependencies:
+  
+   npm install
 
 4. Start the development server:
 
-npm run dev
+   npm run dev
 
-5. Open your web browser and visit `http://localhost:3000` to view the app.
+7. Open your web browser and visit `http://localhost:3000` to view the app.
 
 ## Live Website
 
