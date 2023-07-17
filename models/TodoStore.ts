@@ -28,7 +28,7 @@ const TodoStore = types
       localStorage.setItem("todos", JSON.stringify(self.todos));
     },
     removeTodo: (id: number) => {
-      self.todos = self.todos.filter((_, index) => index !== id);
+      self.todos.spliceWithArray(id, 1)
       localStorage.removeItem("todos");
     },
   }));

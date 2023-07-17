@@ -73,7 +73,6 @@ const TaskForm: React.FC = observer(() => {
           {isOpen ? "Cancel Task" : "Add Task"}
         </button>
       </div>
-
       <div className="relative w-full">
         <form
           className={`${
